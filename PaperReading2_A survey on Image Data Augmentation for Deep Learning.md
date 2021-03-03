@@ -34,16 +34,33 @@ Data Augmentation artificially inflate the training dataset size by either **dat
 
 ### Data Warping
 Data warping augmentations transform existing images such that their label is preserved.  
-(Data warping  This encompasses augmentations such as
-geometric and color transformations, random erasing, adversarial training, and neural
-style transfer.)  
+
 1. **Geometric transformations**
-    * **Flipping:** 
+    * **Flipping** 
+    * **Color space**
+    * **Cropping**
+    * **Rotation**
+    * **Translation**
+    * **Noise injection**
+    * **Color space transformations**   
+  
+2. **Geometric versus photometric transformations**
+    * **Kernel filters**
+    * **Mixing images**
+    * **Random erasing** 
 
 ### Oversampling
 Oversampling augmentations create synthetic instances and add them to the training set.  
-(This includes mixing images, feature space augmentations, and generative
-adversarial networks (GANs).)
+
+1. **Data Augmentations based on Deep Learning**
+    * **Feature space augmentation**
+    * **Adversarial training**
+    * **GAN‑based Data Augmentation**
+    * **Neural Style Transfer**
+    * **Meta learning Data Augmentations**
+        * Neural augmentation
+        * Smart Augmentation
+        * AutoAugment
 
 ## Dataset
 Include MNIST hand written digit recognition, CIFAR-10/100, ImageNet, tiny-imagenet-200, SVHN (street view house numbers), Caltech-101/256, MIT places, MIT-Adobe 5K dataset, Pascal VOC, and Stanford Cars. The datasets most frequently discussed are CIFAR-10, CIFAR-100, and ImageNet.  
@@ -53,7 +70,25 @@ Include MNIST hand written digit recognition, CIFAR-10/100, ImageNet, tiny-image
 
 
 # Experiment Results
+![](https://i.imgur.com/TUyDlT8.png)
+![](https://i.imgur.com/rVdEncs.png)
+![](https://i.imgur.com/adzqLDq.png)
+![](https://i.imgur.com/Ta1prSB.png)
+![](https://i.imgur.com/KCwPPUH.png)
+![](https://i.imgur.com/otB9DCe.png)
+![](https://i.imgur.com/ohiLz7K.png)
+![](https://i.imgur.com/MvvIoTk.png)
+![](https://i.imgur.com/w7IcwJ9.png)
+![](https://i.imgur.com/HVmn3IP.png)
+![](https://i.imgur.com/zy2S9yq.png)
+
 
 # Discussion
-
+## Design considerations for image Data Augmentation
+1. **Test‑time augmentation**
+2. **Curriculum learning**
+3. **Resolution impact**
+4. **Final dataset size**
+5. **Alleviating class imbalance with Data Augmentation**
 ## Question
+* How to choose a Data Augmentation based on domain knowledge?
