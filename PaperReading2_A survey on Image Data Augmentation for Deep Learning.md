@@ -36,31 +36,44 @@ Data Augmentation artificially inflate the training dataset size by either **dat
 Data warping augmentations transform existing images such that their label is preserved.  
 
 1. **Geometric transformations**
-    * **Flipping** 
-    * **Color space**
-    * **Cropping**
-    * **Rotation**
-    * **Translation**
-    * **Noise injection**
-    * **Color space transformations**   
+Geometric transformations are very good solutions for positional biases present in the training data.
+    * **Flipping:** Horizontal axis flipping is much more common than flipping the vertical axis.On datasets involving text recognition such as MNIST or SVHN, this is not a label-preserving transformation.
+    * **Color space:** Digital image data is usually encoded as a tensor of the dimension (height × width × color channels). Performing augmentations in the color channels space is another strategy that is very practical to implement.
+    * **Cropping:** Cropping a central patch of each image. Additionally, random cropping can also be used to provide an effect very similar to translations.
+    * **Rotation:** rotating the image right or left on an axis between 1° and 359°. The safety of rotation augmentations is heavily determined by the rotation degree parameter.
+    * **Translation:** Shifting images left, right, up, or down can be a very useful transformation to avoid positional bias in the data.
+    * **Noise injection:** Noise injection consists of injecting a matrix of random values usually drawn from a Gaussian distribution.
+2. **Color space transformations** Image data is encoded into 3 stacked matrices, each of size height × width. These matrices represent pixel values for an individual RGB color value. Lighting biases are amongst the most frequently occurring challenges to image recognition problems. Color space transformations can also be derived from image-editing apps.  
+Similar to geometric transformations, a disadvantage of color space transformations
+is increased memory, transformation costs, and training time. Additionally,
+color transformations may discard important color information and thus are not
+always a label-preserving transformation.
   
-2. **Geometric versus photometric transformations**
-    * **Kernel filters**
-    * **Mixing images**
-    * **Random erasing** 
+
+3. **Kernel filters** These Kernel filters work by sliding an n × n matrix across an image with either a Gaussian blur filter, which will result in a blurrier  image, or a high contrast vertical or horizontal edge filter which will result in a sharper image along edges.
+4. **Mixing images** Mixing images together by averaging their pixel values is a very counterintuitive approach to Data Augmentation.
+5. **Random erasing** the mechanisms of dropout regularization, random erasing can be seen as analogous to dropout except in the input data space rather than embedded into the network architecture. 
 
 ### Oversampling
 Oversampling augmentations create synthetic instances and add them to the training set.  
 
 1. **Data Augmentations based on Deep Learning**
-    * **Feature space augmentation**
-    * **Adversarial training**
-    * **GAN‑based Data Augmentation**
-    * **Neural Style Transfer**
-    * **Meta learning Data Augmentations**
-        * Neural augmentation
-        * Smart Augmentation
-        * AutoAugment
+    * **Feature space augmentation:** These networks can map images to binary classes or to n × 1 vectors in flattened layers. The sequential processing of neural networks can be manipulated such that the intermediate representations can be separated from the network as a whole.
+        * **SMOTE** used to alleviate problems with class imbalance.This technique is applied to the feature space by joining the k nearest neighbors to form new instances.
+    * **Adversarial training:** Adversarial training is a framework for using two or more networks with contrasting objectives encoded in their loss functions.
+        * **Adversarial attacking** consists of a rival network that learns augmentations to images that result in misclassifications in its rival classification network.
+    * **GAN‑based Data Augmentation:** Generative modeling refers to the practice of creating artificial instances from a dataset such that they retain similar characteristics to the original set.
+        * **Variational auto-encoders** learn a lowdimensional representation of data points. It is another useful strategy for generative modeling worth mentioning.
+        * **Vanilla GAN** uses multilayer perceptron networks in the generator and discriminator networks.
+        * **DCGAN** was proposed to expand on the internal complexity of the generator and discriminator networks.
+        * **Progressively Growing GANs** trains a series of networks with progressive resolution complexity.
+        * **CycleGAN** introduces an additional Cycle-Consistency loss function to help stabilize GAN training. This is applied to image-to-image translation.
+        * **Conditional GANs** add a conditional vector to both the generator and the discriminator in order to alleviate problems with mode collapse.
+    * **Neural Style Transfer:** The general idea is to manipulate the representations of images created in CNNs. Neural Style Transfer is probably best known for its artistic applications, but it also serves as a great tool for Data Augmentation.
+    * **Meta learning Data Augmentations:** The concept of optimizing neural networks with neural networks.
+        * **Neural augmentation** takes in two random images from the same class. The prepended augmentation net maps them into a new image. The image outputted from the augmentation is then transformed with another random image via Neural Style Transfer.These images are then fed into a classification model and the error from the classification model is backpropagated to update the Neural Augmentation net.
+        * **Smart Augmentation** utilizes a similar concept as the Neural Augmentation technique presented above. However, the combination of images is derived exclusively from the learned parameters of a prepended CNN, rather than using the Neural Style Transfer algorithm.
+        * **AutoAugment** is a Reinforcement Learning algorithm that searches for an optimal augmentation policy amongst a constrained set of geometric transformations with miscellaneous levels of distortions.
 
 ## Dataset
 Include MNIST hand written digit recognition, CIFAR-10/100, ImageNet, tiny-imagenet-200, SVHN (street view house numbers), Caltech-101/256, MIT places, MIT-Adobe 5K dataset, Pascal VOC, and Stanford Cars. The datasets most frequently discussed are CIFAR-10, CIFAR-100, and ImageNet.  
