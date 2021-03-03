@@ -70,10 +70,10 @@ Oversampling augmentations create synthetic instances and add them to the traini
         * **CycleGAN** introduces an additional Cycle-Consistency loss function to help stabilize GAN training. This is applied to image-to-image translation.
         * **Conditional GANs** add a conditional vector to both the generator and the discriminator in order to alleviate problems with mode collapse.
     * **Neural Style Transfer:** The general idea is to manipulate the representations of images created in CNNs. Neural Style Transfer is probably best known for its artistic applications, but it also serves as a great tool for Data Augmentation.
-    * **Meta learning Data Augmentations:** The concept of optimizing neural networks with neural networks.
-        * **Neural augmentation** takes in two random images from the same class. The prepended augmentation net maps them into a new image. The image outputted from the augmentation is then transformed with another random image via Neural Style Transfer.These images are then fed into a classification model and the error from the classification model is backpropagated to update the Neural Augmentation net.
-        * **Smart Augmentation** utilizes a similar concept as the Neural Augmentation technique presented above. However, the combination of images is derived exclusively from the learned parameters of a prepended CNN, rather than using the Neural Style Transfer algorithm.
-        * **AutoAugment** is a Reinforcement Learning algorithm that searches for an optimal augmentation policy amongst a constrained set of geometric transformations with miscellaneous levels of distortions.
+2. **Meta learning Data Augmentations:** The concept of optimizing neural networks with neural networks.  
+    * **Neural augmentation** takes in two random images from the same class. The prepended augmentation net maps them into a new image. The image outputted from the augmentation is then transformed with another random image via Neural Style Transfer.These images are then fed into a classification model and the error from the classification model is backpropagated to update the Neural Augmentation net.
+    * **Smart Augmentation** utilizes a similar concept as the Neural Augmentation technique presented above. However, the combination of images is derived exclusively from the learned parameters of a prepended CNN, rather than using the Neural Style Transfer algorithm.
+    * **AutoAugment** is a Reinforcement Learning algorithm that searches for an optimal augmentation policy amongst a constrained set of geometric transformations with miscellaneous levels of distortions.
 
 ## Dataset
 Include MNIST hand written digit recognition, CIFAR-10/100, ImageNet, tiny-imagenet-200, SVHN (street view house numbers), Caltech-101/256, MIT places, MIT-Adobe 5K dataset, Pascal VOC, and Stanford Cars. The datasets most frequently discussed are CIFAR-10, CIFAR-100, and ImageNet.  
