@@ -1,11 +1,11 @@
 # [Paper Reading 1] Self-training with Noisy Student improves ImageNet classification
 
-paper link: https://arxiv.org/abs/1911.04252\
+paper link: https://arxiv.org/abs/1911.04252  
 Xie et al. CVPR 2020
 
 # Poblem Definition
 ## Assumption and Goal(假設與目標)
-State-of-the-art (SOTA) vision models are trained with supervised learning which requires a large corpus of labeled images to work well. By showing the models only labeled images, this paper limit itself from **making use of unlabeled images available in much larger quantities to improve accuracy and robustness of SOTA models**.\
+State-of-the-art (SOTA) vision models are trained with supervised learning which requires a large corpus of labeled images to work well. By showing the models only labeled images, this paper limit itself from **making use of unlabeled images available in much larger quantities to improve accuracy and robustness of SOTA models**.  
 **Noisy Student** Training, a **semi-supervised** learning approach that works well even when labeled data is abundant.
 ## Novelty and Contribution(創新與貢獻)
 * The key improvements lie in adding noise to the student and using student models that are not smaller than the teacher. This makes Noisy Student different from Knowledge Distillation.
@@ -22,10 +22,10 @@ This method not only improves standard ImageNet accuracy, it also improves class
 2. use the teacher to generate pseudo labels on unlabeled images
 3. train a student model on the combination of labeled images and pseudo labeled images
 4. iterate 1.~3. a few times by treating the student as a teacher to relabel the unlabeled data and training a new student
-5. to noise the student, use input noise such as RandAugment data augmentation and model noise such as dropout and stochastic depth during training.\
-\
+5. to noise the student, use input noise such as RandAugment data augmentation and model noise such as dropout and stochastic depth during training.  
+  
 ![](https://i.imgur.com/jctLQzX.png)
-\
+  
 
 ![](https://i.imgur.com/N3tQrJ7.png)
 
@@ -48,7 +48,7 @@ Use EfficientNets as baseline.
 # Discussion
 
 ## Question
-What kind of situation will make student network can not learn better than teacher?
+* What kind of situation will make student network can not learn better than teacher?
 
 ## Comparisons with Existing SSL Methods
 In the early phase of semi-supervised training, the model being trained has low accuracy and high entropy, hence consistency training regularizes the model towards high entropy predictions, and prevents it from achieving good accuracy. While Noisy Student has a separate teacher model to generate pseudo-labels.
