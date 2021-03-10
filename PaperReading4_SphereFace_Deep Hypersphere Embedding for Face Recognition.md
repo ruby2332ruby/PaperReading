@@ -45,7 +45,7 @@ In some sense, Euclidean margin based losses are incompatible with softmax loss,
 A-Softmax loss that enables convolutional neural networks (CNNs) to learn angularly discriminative features.
 
 ## A-Softmax loss
-A-Softmax loss can be viewed as imposing discriminative constraints on a hypersphere manifold, which intrinsically matches the prior that faces also lie on a mani-fold.  
+A-Softmax loss can be viewed as imposing discriminative constraints on a hypersphere manifold, which intrinsically matches the prior that faces also lie on a manifold.  
 * A-Softmax loss defines a large angular margin learning task with adjustable difficulty(m).
 * Lower bound of mmin in binary-class case is 2+√3.
 * Lower bound of mmin in multi-class case is 3.  
