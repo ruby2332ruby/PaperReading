@@ -49,7 +49,7 @@ A-Softmax loss that enables convolutional neural networks (CNNs) to learn angula
 A-Softmax loss can be viewed as imposing discriminative constraints on a hypersphere manifold, which intrinsically matches the prior that faces also lie on a mani-fold.  
 * A-Softmax loss defines a large angular margin learning task with adjustable difficulty(m).
 * Lower bound of mmin in binary-class case is 2+√3.
-* Lower bound of mmin in multi-class case is 3.
+* Lower bound of mmin in multi-class case is 3.  
 ![](https://i.imgur.com/7CmRzYd.png)
 
 
