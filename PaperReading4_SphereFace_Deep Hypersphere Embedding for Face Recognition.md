@@ -54,7 +54,9 @@ A-Softmax loss can be viewed as imposing discriminative constraints on a hypersp
 
 
 # Experiment Results
-![](https://i.imgur.com/1aweWPL.png)
+![](https://i.imgur.com/1aweWPL.png)  
+![](https://i.imgur.com/eYogtx4.png)
+
 
 # Discussion
 ## Why angular margin.
