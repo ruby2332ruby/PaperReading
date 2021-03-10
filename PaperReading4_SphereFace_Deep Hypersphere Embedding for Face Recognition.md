@@ -3,8 +3,7 @@ paper link: https://openaccess.thecvf.com/content_cvpr_2017/html/Liu_SphereFace_
 Liu et al. CVPR 2017
 # Poblem Definition
 ## Assumption and Goal
-This paper addresses deep face recognition (FR) prob-
-lem under open-set protocol, where ideal face features are expected to have smaller maximal intra-class distance than minimal inter-class distance under a suitably chosen metric space.
+This paper addresses deep face recognition (FR) problem under open-set protocol, where ideal face features are expected to have smaller maximal intra-class distance than minimal inter-class distance under a suitably chosen metric space.
 * **met-ric space (賦距空間) :** 在數學中，賦距空間是一個集合及其度量，該度量是一個函數，定義了集合中任兩個成員（通常我們稱為"點"）間的距離這一概念。賦距空間中最符合人們對於現實直觀理解的為三維歐幾里得空間。  
     * 每個點和自己的距離為0，
     * 任兩點間的距離為正數，
