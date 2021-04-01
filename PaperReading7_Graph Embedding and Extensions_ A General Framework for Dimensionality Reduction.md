@@ -80,15 +80,26 @@ optimal: ![](https://i.imgur.com/Gx49rF5.png)
 * **Tensor Marginal Fisher Analysis:** with the objects are represented as tensors of arbitrary order.  
 ![](https://i.imgur.com/SfGWM7j.png)
 
-
-## [3] Dataset
-
 # Experiment Results
+
+## [1] Dataset
+the **XM2VTS**, **CMU PIE**, and **ORL** databases for face recognition.  
+
+## [2] Results
+![](https://i.imgur.com/0HsU8ik.png)
+
+![](https://i.imgur.com/e7MTg1A.png)
+![](https://i.imgur.com/1gvxt8Y.png)
+![](https://i.imgur.com/G2XMElt.png)
+
+
 
 # Discussion
 
 ## [1] Conclusion
-
+Provided insights into the relationship
+among the state-of-the-art dimensionality reduction algorithms, as well as to facilitate the design of new algorithms.  
+Proposed a novel dimensionality reduction algorithm called Marginal Fisher Analysis. This new algorithm is shown to effectively overcome the data distribution assumption of the traditional LDA algorithm. Thus, MFA is a more general algorithm for discriminant analysis.
 ## [2] Future Works
 * Systematically compare all possible extensions of thealgorithms mentioned in this paper.  
 * The combination of the kernel trick and tensorization.  
