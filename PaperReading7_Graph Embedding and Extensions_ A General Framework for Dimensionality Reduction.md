@@ -42,18 +42,32 @@ Marginal Fisher Analysis in which the **intrinsic graph** characterizes the intr
 ![](https://i.imgur.com/7MttTmX.png)
 * **Approach:**
     * **Linearization:** do linear projection: ![](https://i.imgur.com/xD4GQey.png)  
-*Graph-preserving Criterion:* ![](https://i.imgur.com/myta7wq.png)  
+*Graph-preserving Criterion:*  
+![](https://i.imgur.com/myta7wq.png)  
     * **Kernelization:** to map the data from the original input space to another higher dimensional Hilbert space and then perform the linear algorithm in this new feature space.  
-    *Graph-preserving Criterion:* ![](https://i.imgur.com/mwvjsNk.png)  
+    *Graph-preserving Criterion:*  
+    ![](https://i.imgur.com/mwvjsNk.png)  
     * **Tensorization:** to conduct dimensionality reduction with vertices encoded as general tensors of an arbitrary order.  
-    *Graph-preserving Criterion:* ![](https://i.imgur.com/QkSgkAY.png)  
+    *Graph-preserving Criterion:*  
+    ![](https://i.imgur.com/QkSgkAY.png)  
 
 ## [3] General Framework for Dimensionality Reduction
 The previously mentioned dimensionality reduction algorithms can be reformulated within the presented graph embedding framework.  
 The differences between these algorithms lie in the computation of the similarity matrix of the graph and the selection of the constraint matrix.  
 ![](https://i.imgur.com/cdjYUFK.png)
 * The top row is the graph embedding type, the middle row is the corresponding objective function, and the third row lists the sample algorithms.  
+
 ![](https://i.imgur.com/6oXQ4Qh.png)
+
+## [4] Marginal Fisher Analysis
+* **Limitation of LDA:** LDA is developed with the assumption that the data of each class is of a **Gaussian distribution**, a property that often does not exist in real-world problems. Without this property, separability of the different classes cannot be well characterized by interclass scatter.  
+* **Marginal Fisher Analysis(MFA):** an **intrinsic graph** that characterizes the intraclass compactness and another **penalty graph** which characterizes the interclass separability.  
+![](https://i.imgur.com/CHp980m.png)  
+* **The algorithmic procedure of MFA:**
+    1. PCA projection.
+    2. Constructing the intraclass compactness and interclass separability graphs.
+    3. Marginal Fisher Criterion.![](https://i.imgur.com/jV40BnE.png)
+    4. Output the final linear projection direction![](https://i.imgur.com/NlHzgX3.png)
 
 
 ## [3] Dataset
