@@ -37,27 +37,27 @@ Marginal Fisher Analysis in which the **intrinsic graph** characterizes the intr
 * **Classification Problem to Graph:** an undirected weighted graph with vertex set **X** (training dataset) and similarity matrix **W**, where W (symmetric matrix) measures, for a pair of vertices, its similarity, which may be negative.  
 * **Intrinsic Graph:** the graph G itself and a penalty graph **Gp:** Wpg as a graph whose vertices **X** are the same as those of G, but whose edge weight matrix **Wp** corresponds to the similarity characteristics that are to be suppressed in the dimension-reduced feature space.  
 * **Graph Embedding:** an algorithm to find the desired low-dimensional vector representations relationships among the vertices of G that best characterize the **similarity relationship** between the vertex pairs in G.  
-![](https://i.imgur.com/5Qy6FIz.png =500x)
+![](https://i.imgur.com/5Qy6FIz.png)
 * **Graph-preserving Criterion:** For larger (positive) similarity between samples xi and xj, the distance between yi and yj should be smaller to minimize the objective function. Likewise, smaller (negative) similarity between xi and xj should lead to larger distances between yi and yj for minimization.  
-![](https://i.imgur.com/7MttTmX.png =500x)
+![](https://i.imgur.com/7MttTmX.png)
 * **Approach:**
-    * **Linearization:** do linear projection: ![](https://i.imgur.com/xD4GQey.png =80x)  
+    * **Linearization:** do linear projection: ![](https://i.imgur.com/xD4GQey.png)  
 *Graph-preserving Criterion:*  
-![](https://i.imgur.com/myta7wq.png =500x)  
+![](https://i.imgur.com/myta7wq.png)  
     * **Kernelization:** to map the data from the original input space to another higher dimensional Hilbert space and then perform the linear algorithm in this new feature space.  
     *Graph-preserving Criterion:*  
-    ![](https://i.imgur.com/mwvjsNk.png =500x)  
+    ![](https://i.imgur.com/mwvjsNk.png)  
     * **Tensorization:** to conduct dimensionality reduction with vertices encoded as general tensors of an arbitrary order.  
     *Graph-preserving Criterion:*  
-    ![](https://i.imgur.com/QkSgkAY.png =450x)  
+    ![](https://i.imgur.com/QkSgkAY.png)  
 
 ## [3] General Framework for Dimensionality Reduction
 The previously mentioned dimensionality reduction algorithms can be reformulated within the presented graph embedding framework.  
 The differences between these algorithms lie in the computation of the similarity matrix of the graph and the selection of the constraint matrix.  
-![](https://i.imgur.com/cdjYUFK.png =400x)
+![](https://i.imgur.com/cdjYUFK.png)
 * The top row is the graph embedding type, the middle row is the corresponding objective function, and the third row lists the sample algorithms.  
 
-![](https://i.imgur.com/6oXQ4Qh.png =800x)
+![](https://i.imgur.com/6oXQ4Qh.png)
 
 ## [4] Marginal Fisher Analysis
 * **Limitation of LDA:** LDA is developed with the assumption that the data of each class is of a **Gaussian distribution**, a property that often does not exist in real-world problems. Without this property, separability of the different classes cannot be well characterized by interclass scatter.  
@@ -66,16 +66,16 @@ The differences between these algorithms lie in the computation of the similarit
 * **The algorithmic procedure of MFA:**
     1. PCA projection.
     2. Constructing the intraclass compactness and interclass separability graphs.
-    3. Marginal Fisher Criterion.![](https://i.imgur.com/jV40BnE.png =300x)
-    4. Output the final linear projection direction![](https://i.imgur.com/NlHzgX3.png =140x)
+    3. Marginal Fisher Criterion.![](https://i.imgur.com/jV40BnE.png)
+    4. Output the final linear projection direction![](https://i.imgur.com/NlHzgX3.png)
 * **The Advantages of MFA:**
     1. The available projection directions are much greater than that of LDA and the dimension size is determined by k2, the selected number of shortest pairs of in-class and out-of-class sample pairs.
     2. There is no assumption on the data distribution of each class and the intraclass compactness is characterized by the sum of the distances between each data and its k1-nearest neighbors of the same class. Thus, it is more general for discriminant analysis.
     3. Without prior information on data distributions, the interclass margin can better characterize the separability of different classes than the interclass variance in LDA.
 
 * **Kernel Marginal Fisher Analysis:** The kernel trick is widely used to enhance the separation ability. Marginal Fisher Analysis can be further improved by using the kernel trick.  
-projection direction be: ![](https://i.imgur.com/pVldCxD.png =200x)  
-optimal: ![](https://i.imgur.com/Gx49rF5.png =340x)
+projection direction be: ![](https://i.imgur.com/pVldCxD.png)  
+optimal: ![](https://i.imgur.com/Gx49rF5.png)
 
 * **Tensor Marginal Fisher Analysis:** with the objects are represented as tensors of arbitrary order.  
 ![](https://i.imgur.com/SfGWM7j.png)
