@@ -86,11 +86,10 @@ optimal: ![](https://i.imgur.com/Gx49rF5.png)
 the **XM2VTS**, **CMU PIE**, and **ORL** databases for face recognition.  
 
 ## [2] Results
-![](https://i.imgur.com/0HsU8ik.png)
-
-![](https://i.imgur.com/e7MTg1A.png)
-![](https://i.imgur.com/1gvxt8Y.png)
-![](https://i.imgur.com/G2XMElt.png)
+![](https://i.imgur.com/0HsU8ik.png)  
+![](https://i.imgur.com/e7MTg1A.png)  
+![](https://i.imgur.com/1gvxt8Y.png)  
+![](https://i.imgur.com/G2XMElt.png)  
 
 
 
@@ -108,4 +107,5 @@ Proposed a novel dimensionality reduction algorithm called Marginal Fisher Analy
 * This framework only considers the L2 distance as a similarity measure, which means that it can only take into account the second-order statistics of the data set. How to utilize higher order statistics of the data set in the graph embedding framework.  
 
 ## [3] Question
-* 
+* Why used multiplication not addition between graph embedding operation?
+* If we modify it into a **directed** weighted graph, is it meaningful?
