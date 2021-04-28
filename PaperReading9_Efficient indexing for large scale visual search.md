@@ -100,7 +100,8 @@ SIFT features were chosen as local features to represent images.
 
 ![](https://i.imgur.com/HHpARnN.png)  
 
-![](https://i.imgur.com/9Xp4cgy.png)  
+![](https://i.imgur.com/cnBIN7L.png)  
+
 
 
 # Discussion
