@@ -14,8 +14,6 @@ prone process. More and more people getting interest in **automated neural archi
     2. search strategy
     3. performance estimation strategy
 
-## [3] Promising Application(未來應用)
-
 # Technical Summary
 
 ## [1] Neural Architecture Search (NAS)
