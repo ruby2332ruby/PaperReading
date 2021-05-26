@@ -38,7 +38,7 @@ While larger networks have exhibited better performance, possibly due to the lot
     * with a predefined per-layer pruning ratio  
     * simultaneously over all layers  
 
-## [2] Exsiting Pruning Method
+## [3] Exsiting Pruning Method
 **The method belowed rely on the belief that the magnitude of a weight and its importance are strongly correlated.**  
 * greedy algorithms: a significant computational cost
 * sparse regularization
@@ -53,7 +53,7 @@ Exact solution for Pruning:
 * Regularize the scaling term (γ) of batch-norm layers and apply soft thresholding when value fell below a predefined threshold.
 * Utilize pruning as a network training regularizer
 
-## [3] Method
+## [4] Method
 Include a sparsification term in the cost function to minimize the size of the model.  
 ![](https://i.imgur.com/HNFz6pm.png)  
 ![](https://i.imgur.com/DHF44gc.png)  
@@ -79,14 +79,14 @@ To approximate the joint importance of a structural set of parameters Ws, e.g. a
 
 The proposed metric, I(1), can be interpreted as the variance estimate and as the diagonal of the Fisher information matrix.  
 
-## [4] Algorithm
+## [5] Algorithm
 During each epoch, the following steps are
 repeated:  
 1. For each minibatch, we compute parameter gradients and update network weights by gradient descent. We also compute the importance of each neuron (or filter) using the gradient averaged over the minibatch, as described in (7) or (8). (Or, the second-order importance estimate may be computed if the Hessian is available.)  
 2. After a predefined number of minibatches, we average the importance score of each neuron (or filter) over the of minibatches, and remove the N neurons with the smallest importance scores.  
 Fine-tuning and pruning continue until the target number of neurons is pruned, or the maximum tolerable loss can no longer be achieved.  
 
-## [5] Implementation Details
+## [6] Implementation Details
 You can read these details in the original paper.  
 * Hessian computation
 * Importance score accumulation
@@ -97,7 +97,7 @@ You can read these details in the original paper.
 * Number of minibatches
 * Number of neurons
 
-## [6] Dataset
+## [7] Dataset
 * CIFAR-10
 * ImageNet
 
