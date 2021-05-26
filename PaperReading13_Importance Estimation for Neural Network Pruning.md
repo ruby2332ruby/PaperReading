@@ -102,10 +102,14 @@ You can read these details in the original paper.
 * ImageNet
 
 # Experiment Results
+* Results in Fig. 3 show that Oracle pruning performs best, followed closely by the second- and first-order Taylor expansion criteria, respectively. Both first and second-order Taylor methods prune nearly the same number of neurons as the Oracle before exceeding the loss threshold.  
 ![](https://i.imgur.com/i1P19c7.png)  
 
 ![](https://i.imgur.com/vh7nJcx.png)  
 
+
+* The statistical correlation between heuristics and measured importance are summarized in Table 2. As previously discussed, the most promising variation uses a gate after each batch-norm layer. The All layers correlation columns show how well the criteria scale across layers.  
+* Surprisingly, we observe >92% Pearson correlation for ResNet and DenseNet, showing we can almost exactly predict the change in loss for every neuron.  
 ![](https://i.imgur.com/k22pCVU.png)  
 
 ![](https://i.imgur.com/ZbVFKI1.png)  
