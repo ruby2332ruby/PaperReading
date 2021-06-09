@@ -85,9 +85,7 @@ Motion planner is to generate trajectories that are safe, comfortable and progre
     * Routing and Driving on Roads:to encourage the SDV to perform the high-level command, we use a scoring function that encourages trajectories that travel a larger distance in regions with high probability in R.  
     * Safety: The predicted occupancy layers and motion predictions are used to score the trajectory samples with respect to safety. We penalize trajectories where the SDV overlaps occupied regions.  
     * Comfort: We also penalize jerk, lateral acceleration, curvature and its rate of change to promote comfortable driving.  
-* **Learning:** We optimize our driving model in **two stages**. 
-    * first train the online map, dynamic occupancy field, and routing. Until these are converged.  
-    * second stage, we keep these parts frozen and train the planner weights for the linear combination of scoring functions.  
+* **Learning:** We optimize our driving model in **two stages**. **First** train the online map, dynamic occupancy field, and routing. Until these are converged. **Second** stage, we keep these parts frozen and train the planner weights for the linear combination of scoring functions.  
     * Online map: We train the online map using negative loglikelihood (NLL) under the data distribution.  
     * Dynamic occupancy field:we employ cross entropy loss with hard negative mining to tackle the high imbalance in the data. The motion modes K are learned in an unsupervised fashion via a categorical cross-entropy. Then, only the associated motion vector from the true mode is trained via a Huber loss.  
     * Routing: We train the route prediction with binary crossentropy loss.  
