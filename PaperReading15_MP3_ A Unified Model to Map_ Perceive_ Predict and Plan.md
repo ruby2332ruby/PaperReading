@@ -77,8 +77,7 @@ Interpretable representations estimate the current and future state of the world
 
 ## [7] Motion Planning
 Motion planner is to generate trajectories that are safe, comfortable and progressing towards the goal. We design a sample-based motion-planner in which a set of kinematically-feasible trajectories are generated and then evaluated using a learned scoring function.  
-* minimum cost:   
-![](https://i.imgur.com/9OCc0tD.png)
+* minimum cost: ![](https://i.imgur.com/9OCc0tD.png)
 * **Trajectory Sampling:** we use retrieval from a largescale dataset of real trajectories. We create a dataset of expert demonstrations by binning based on the SDV initial state, clustering the trajectories of each bin, and using the cluster prototypes for efficiency.  
 * **Route Prediction:** we assume we are given a driving command as a tuple c = (a; d), where a belongs to {keep lane, turn left, turn rightg} is a discrete high-level action, and d an an approximate longitudinal distance to the action. To simulate GPS errors, we randomly sample noise from a zero-mean Gaussian with 5m standard deviation. We model the route as a collection of Bernoulli random variables, one for each grid cell in BEV.  
 * **Trajectory Scoring:** use a linear combination of the following cost functions to score the sampled trajectories.  
