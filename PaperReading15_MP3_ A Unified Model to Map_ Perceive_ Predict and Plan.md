@@ -79,16 +79,49 @@ Interpretable representations estimate the current and future state of the world
 Motion planner is to generate trajectories that are safe, comfortable and progressing towards the goal. We design a sample-based motion-planner in which a set of kinematically-feasible trajectories are generated and then evaluated using a learned scoring function.  
 * minimum cost:   
 ![](https://i.imgur.com/9OCc0tD.png)
-* **Trajectory Sampling:** 
-* **Route Prediction:** 
-
-## [1] Architecture
-
-## [2] Dataset
+* **Trajectory Sampling:** we use retrieval from a largescale dataset of real trajectories. We create a dataset of expert demonstrations by binning based on the SDV initial state, clustering the trajectories of each bin, and using the cluster prototypes for efficiency.  
+* **Route Prediction:** we assume we are given a driving command as a tuple c = (a; d), where a belongs to {keep lane, turn left, turn rightg} is a discrete high-level action, and d an an approximate longitudinal distance to the action. To simulate GPS errors, we randomly sample noise from a zero-mean Gaussian with 5m standard deviation. We model the route as a collection of Bernoulli random variables, one for each grid cell in BEV.  
+* **Trajectory Scoring:** use a linear combination of the following cost functions to score the sampled trajectories.  
+    * Routing and Driving on Roads:to encourage the SDV to perform the high-level command, we use a scoring function that encourages trajectories that travel a larger distance in regions with high probability in R.  
+    * Safety: The predicted occupancy layers and motion predictions are used to score the trajectory samples with respect to safety. We penalize trajectories where the SDV overlaps occupied regions.  
+    * Comfort: We also penalize jerk, lateral acceleration, curvature and its rate of change to promote comfortable driving.  
+* **Learning:** We optimize our driving model in **two stages**. 
+    * first train the online map, dynamic occupancy field, and routing. Until these are converged.  
+    * second stage, we keep these parts frozen and train the planner weights for the linear combination of scoring functions.  
+    * Online map: We train the online map using negative loglikelihood (NLL) under the data distribution.  
+    * Dynamic occupancy field:we employ cross entropy loss with hard negative mining to tackle the high imbalance in the data. The motion modes K are learned in an unsupervised fashion via a categorical cross-entropy. Then, only the associated motion vector from the true mode is trained via a Huber loss.  
+    * Routing: We train the route prediction with binary crossentropy loss.  
+    * Scoring: Since use the maxmargin loss to penalize trajectories that have small cost but differ from the human demonstration or are unsafe.  
 
 # Experiment Results
 
+## [1] Dataset
+* URBANEXPERT  
+
+## [2] Baselines
+* Imitation Learning (IL)  
+* Conditional Imitation Learning (CIL)  
+* Neural Motion Planner (NMP)  
+* Trajectory Classification (TC)  
+* extend NMP to consider the high-level command by learning a separate costing network for each discrete action (CNMP)  
+
+## [3] Results
+* **Closed-loop Simulation Results:** shows that our method clearly outperforms all the baselines across all metrics. MP3 achieves over 3x the success rate, diverges from the route a third of the times, imitates the human expert driver at least twice as close, and progresses 3x more per event than any baseline, while also being the most comfortable.  
+![](https://i.imgur.com/Mgz4X5s.png)  
+
+* **Open-Loop Evaluation:** our MP3 model produces the safest trajectories that in turn achieve the most progress and are the most comfortable.  
+![](https://i.imgur.com/bnD5FDi.png)  
+
+* **Qualitative Results:** Scenario 1 shows the predictions when our model is commanded to keep straight at the intersection. Scenario 2 and Scenario 3 show how our model accurately predicts the route when given turning commands, as well as how planning can progress through crowded scenes similar to the human demonstrations.  
+![](https://i.imgur.com/PQrkIzA.png)  
+
 # Discussion
 
-## [1] Question
-* 
+## [1] Conclusion
+Importantly, our method produces probabilistic
+intermediate representations that are interpretable and ready-to-use as cost functions in our neural motion planner.  
+
+When we evaluate our model in a closed-loop simulator without any additional training it is far more robust than the baselines, achieving very significant improvements across all netrics.  
+
+## [2] Question
+* Can we switch between HD map driving and mapless driving to get higher and more stable performance?  
